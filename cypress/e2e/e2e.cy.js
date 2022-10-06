@@ -65,6 +65,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('.woocommerce-button').click()
         })
 
+        
         // Preencher os dados do Faturamento
         EnderecoPage.editarEnderecoFaturamento('Larissa', 'Castro', 'EBAC TESTE', 'Brasil', 'Av Brasil', '1', 'Sorocaba', 'São Paulo', '14096600', '1699190076', 'teste@teste.com', 'teste')
         cy.get('#payment_method_cod').click()
