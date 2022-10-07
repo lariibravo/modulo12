@@ -17,41 +17,15 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
     it('Devo fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
 
-        //Acesse o menu Comprar
-        cy.get('#primary-menu > .menu-item-629 > a').click()
+        
         //escolha do primeiro produto
-        cy.get('[class="product-block grid"]').contains('Ajax Full-Zip Sweatshirt').click()
-        // Escolha o tamanho, cor e quantidade
-        cy.addProduto('S', 'Red', '1')   
-        //Confirma a adição no carrinho
-        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho') 
-
-        //voltar para a página de produto
-        cy.get('#primary-menu > .menu-item-629 > a').click()
+        cy.addProduto('Ajax Full-Zip Sweatshirt', 'S', 'Green', '1')
         //escolher do segundo produto
-        cy.get('[class="product-block grid"]').contains('Atlas Fitness Tank').click()
-        // Escolha o tamanho, cor e quantidade
-        cy.addProduto('S', 'Blue', '1')   
-        //Confirma a adição no carrinho
-        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
-
-        //voltar para a página de produto
-        cy.get('#primary-menu > .menu-item-629 > a').click()
+        cy.addProduto('Atlas Fitness Tank', 'S', 'Blue', '1') 
         //escolher do terceiro produto
-        cy.get('[class="product-block grid"]').contains('Argus All-Weather Tank').click()
-        // Escolha o tamanho, cor e quantidade
-        cy.addProduto('S', 'Gray', '1')   
-        //Confirma a adição no carrinho
-        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
-
-        //voltar para a página de produto
-        cy.get('#primary-menu > .menu-item-629 > a').click()
+        cy.addProduto('Argus All-Weather Tank', 'S', 'Gray', '1')   
         //escolher do quarto produto
-        cy.get('[class="product-block grid"]').contains('Arcadio Gym Short').click()
-        // Escolha o tamanho, cor e quantidade
-        cy.addProduto('34', 'Blue', '1')   
-        //Confirma a adição no carrinho
-        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+        cy.addProduto('Arcadio Gym Short', '34', 'Blue', '1')   
 
         //clique no botão carrinho de compra
         cy.get('.woocommerce-message > .button').click()
@@ -65,7 +39,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('.woocommerce-button').click()
         })
 
-        
+
         // Preencher os dados do Faturamento
         EnderecoPage.editarEnderecoFaturamento('Larissa', 'Castro', 'EBAC TESTE', 'Brasil', 'Av Brasil', '1', 'Sorocaba', 'São Paulo', '14096600', '1699190076', 'teste@teste.com', 'teste')
         cy.get('#payment_method_cod').click()
