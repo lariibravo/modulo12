@@ -20,12 +20,16 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         
         //escolha do primeiro produto
         cy.addProduto('Ajax Full-Zip Sweatshirt', 'S', 'Green', '1')
+        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
         //escolher do segundo produto
-        cy.addProduto('Atlas Fitness Tank', 'S', 'Blue', '1') 
+        cy.addProduto('Atlas Fitness Tank', 'S', 'Blue', '1')
+        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho') 
         //escolher do terceiro produto
-        cy.addProduto('Argus All-Weather Tank', 'S', 'Gray', '1')   
+        cy.addProduto('Argus All-Weather Tank', 'L', 'Gray', '1')  
+        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho') 
         //escolher do quarto produto
         cy.addProduto('Arcadio Gym Short', '34', 'Blue', '1')   
+        cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
 
         //clique no botão carrinho de compra
         cy.get('.woocommerce-message > .button').click()
@@ -46,7 +50,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('#terms').click()
         cy.get('#place_order').click()
 
-        cy.get('.page-title').should('contain', 'Pedido recebido')
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+
+       // cy.get('.page-title').should('contain', 'Pedido recebido')
 
 
         
