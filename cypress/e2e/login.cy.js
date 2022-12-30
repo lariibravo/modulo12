@@ -25,6 +25,7 @@ context('Funcionalidade Login', () => {
         cy.fixture('perfil').then((dados) => {
             cy.login(dados.usuario, dados.senha)
         })
+        
         cy.get('.page-title').should('contain', 'Minha conta')
     });
 
